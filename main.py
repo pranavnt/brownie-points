@@ -28,15 +28,22 @@ async def on_message(message):
             else:
                 await message.channel.send(
                     "You are not authorized to give brownie points")
-        elif message.content[1:6] == "points":
-            await message.channel.send(message.content[7:] +
+        elif message.content[1:6] == "fetch":
+            await message.channel.send(str(message.content[7:]) +
                                        " has a balance of " +
-                                       db[message.content[7:]] +
+                                       str(db[message.content[7:]]) +
                                        " brownie points")
-            pass
+#        elif message.content[1:4] == "top":
+#            resp = "Leaderboard: \n"
+#            keys = db.keys()
+#            print(keys)
+#            for i in keys():
+#              print(i)
+#            await message.channel.send(resp)
         #elif "harish" in message.content.lower():
         #    print("hi")
         #    message.channel.send()
-
+        else:
+          await message.channel.send("Command not found :(")
 
 client.run(os.getenv("TOKEN"))
