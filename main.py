@@ -11,9 +11,14 @@ async def on_ready():
 async def on_message(message):
   if message.author == "client.user":
     return
-  if "$" in list(message.content)[0]:
+  if "$" in (message.content)[0]:
     if str(message.author) == "Pranav#0828":
-      await message.channel.send("HI PRANAV")
+      if (message.content[1:5]=="give"):
+        
+        await message.channel.send(message.content[6:])
+      else:
+        await message.channel.send(":/")
+        
     else:
       await message.channel.send("You are not authorized to give brownie points")
       print(message.author)
