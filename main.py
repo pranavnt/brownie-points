@@ -1,4 +1,5 @@
 import discord
+import os
 
 client = discord.Client()
 
@@ -8,13 +9,17 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.author == "client.user":
-        return
-
-    print(message.author) 
+  if message.author == "client.user":
+    return
+  if "$" in list(message.content)[0]:
+    if str(message.author) == "Pranav#0828":
+      await message.channel.send("HI PRANAV")
+    else:
+      await message.channel.send("You are not authorized to give brownie points")
+      print(message.author)
     
     #elif "harish" in message.content.lower():
     #    print("hi")
     #    message.channel.send()
 
-client.run('')
+client.run(os.getenv("TOKEN"))
